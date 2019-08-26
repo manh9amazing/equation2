@@ -18,7 +18,7 @@ public class Equation2 {
                    System.out.println("phuong trinh vo nghiem");
                }
                else {
-                   System.out.println("phuong tirnh vo so nghiem");
+                   System.out.println("phuong trinh vo so nghiem");
                }
            }
            else {
