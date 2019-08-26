@@ -9,6 +9,7 @@ public class Equation2 {
         this.c = c;
     }
 
+
    void execute(){
        System.out.println("tinh nghiem");
        if (a == 0) {

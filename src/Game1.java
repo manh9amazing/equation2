@@ -48,6 +48,7 @@ public class Game1 {
             }
         }
 
+
     }
     public  void  run(){
         //player nhap lenh

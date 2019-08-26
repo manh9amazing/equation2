@@ -8,5 +8,6 @@ public class Buoi1 {
         String s = so + "";// cach bien so thanh ki tu
         System.out.println(s);
     }
+
 }
 //scope
