@@ -3,6 +3,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+//Ghi chú:
+// 1.Game có thể thay đổi size map bằng cách thay số ở mapwidth và mapheight
+// 2.Game có thể thêm key và enemy chỉ bằng các biến mới, thuật toán không đổi
+//   (vd: thêm 1 enemy 3 ta thêm enemy3X, enemy3Y sau đó copy paste đoạn code có mặt enemy 1 hoặc 2 và thay bằng số 3.)
+//   (tương tự với key)
+// 3.Luật thắng có giả thiết nếu trong 1 lượt, player, key và enemy trên cùng 1 ô thì player vẫn thắng.
+
+
 public class Game1 {
     int playerX ;
     int playerY ;
@@ -239,7 +247,7 @@ public class Game1 {
 
 
     }
-    public  void  run(){
+    public  void run(){
         //player nhap lenh
         Scanner sc = new Scanner(System.in);
         String input = sc.next();
