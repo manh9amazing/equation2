@@ -6,7 +6,6 @@ public class Test {
     int lol = 1 ;
 
     public static void main(String[] args) {
-
         List listA = new ArrayList();
         listA.add(3);
         listA.add(4);

@@ -100,7 +100,6 @@ public class Game1 {
         while (isOk < cntNeeded ){
             System.out.println(isOk);
             System.out.println(cntNeeded);
-
             int isSame = 0;
             enemy1X = tempX = rand.nextInt(4);
             enemy1Y = tempY = rand.nextInt(4);
