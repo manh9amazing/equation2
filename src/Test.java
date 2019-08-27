@@ -18,7 +18,8 @@ public class Test {
         System.out.println(n);
         int joj = listA.size();
         System.out.println(joj);
-        System.out.println("-------------------");
+        joj--;
+        System.out.println(joj);
     }
 }
 

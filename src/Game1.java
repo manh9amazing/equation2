@@ -51,6 +51,7 @@ public class Game1 {
 
 
     }
+
     public void setUp(){
 
         int isOk = 0;
@@ -144,13 +145,78 @@ public class Game1 {
             }
         }
     }
-
     public void nextStep(){
         cntNeeded++;
         X_used.add(tempX);
         Y_used.add(tempY);
         size = X_used.size();
 
+    }
+
+    public void enemy1Run(){
+        Random rand2 = new Random();
+        int choiceXY = rand2.nextInt(2);
+        int choiceDI = rand2.nextInt(2);
+        if (choiceXY==0){
+            if(choiceDI==0){
+                if(enemy1X!=0){
+                    enemy1X--;
+                }
+            }
+            if(choiceDI==1){
+                if(enemy1X!=mapwidth-1){
+                    enemy1X++;
+                }
+            }
+        }
+        if (choiceXY==1){
+            if(choiceDI==0){
+                if(enemy1Y!=0){
+                    enemy1Y--;
+                }
+            }
+            if(choiceDI==1){
+                if(enemy1Y!=mapheight-1){
+                    enemy1Y++;
+                }
+            }
+        }
+
+
+    }
+    public void enemy2Run(){
+        Random rand3 = new Random();
+        int choiceXY = rand3.nextInt(2);
+        int choiceDI = rand3.nextInt(2);
+        if (choiceXY==0){
+            if(choiceDI==0){
+                if(enemy2X!=0){
+                    enemy2X--;
+                }
+            }
+            if(choiceDI==1){
+                if(enemy2X!=mapwidth-1){
+                    enemy2X++;
+                }
+            }
+        }
+        if (choiceXY==1){
+            if(choiceDI==0){
+                if(enemy2Y!=0){
+                    enemy2Y--;
+                }
+            }
+            if(choiceDI==1){
+                if(enemy2Y!=mapheight-1){
+                    enemy2Y++;
+                }
+            }
+        }
+
+    }
+    public void enemyRun(){
+        this.enemy1Run();
+        this.enemy2Run();
     }
 
     public void gameLoop(){
@@ -164,6 +230,11 @@ public class Game1 {
                 break;
                 //cach 2 System.exit(0);
             }
+            else if ((playerX == enemy1X && playerY ==enemy1Y)||(playerX == enemy2X && playerY ==enemy2Y)){
+                this.printMap();
+                System.out.println("LOSE");
+                break;
+            }
         }
 
 
@@ -176,17 +247,21 @@ public class Game1 {
 
         if (input.equals("up")){
             this.playerY--;
+            this.enemyRun();
         }
         else if (input.equals("down")){
             this.playerY++;
+            this.enemyRun();
         }
         else if (input.equals("right")){
             this.playerX++;
+            this.enemyRun();
             //cach 2 if playerX != 3 thi thuc hien lenh
         }
         else if (input.equals("left")){
 //            System.out.println("left");
             this.playerX--;
+            this.enemyRun();
         }
         this.clamp();
     }
@@ -205,18 +280,18 @@ public class Game1 {
             playerY = 3;
         }
     }
-
     public void printMap(){
         for (int i = 0; i < mapheight; i++) {
             for (int j = 0; j < mapwidth; j++) {
-                if (i==playerY && j==playerX){
-                    System.out.print(" P ");
-                }
-                else if (i==enemy1Y && j==enemy1X){
+
+                if (i==enemy1Y && j==enemy1X){
                     System.out.print(" E ");
                 }
                 else if (i==enemy2Y && j==enemy2X){
                     System.out.print(" E ");
+                }
+                else if (i==playerY && j==playerX){
+                    System.out.print(" P ");
                 }
                 else if (i==keyY && j==keyX){
                     System.out.print(" K ");
