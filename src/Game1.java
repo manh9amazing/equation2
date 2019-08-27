@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Game1 {
     int playerX ;
@@ -16,25 +19,141 @@ public class Game1 {
     int keyX;
     int keyY;
 
+    int tempX;
+    int tempY;
+
+    int cntNeeded = 1;
+
+    List X_used = new ArrayList();
+    List Y_used = new ArrayList();
+
+    int size = 0;
 
     public Game1() {
+
+
+        this.setUp();
+        this.keyX = keyX;
+        this.keyY = keyY;
         //day la toa do player
-        this.playerX = 2;
-        this.playerY = 2;
+        this.playerX = playerX;
+        this.playerY = playerY;
 
-        this.enemy1X = 3;
-        this.enemy1Y = 3;
+        this.enemy1X = enemy1X;
+        this.enemy1Y = enemy1Y;
 
-        this.enemy2X = 2;
-        this.enemy2Y = 3;
+        this.enemy2X = enemy2X;
+        this.enemy2Y = enemy2Y;
 
         this.mapheight = 4;
         this.mapwidth = 4;
 
-        this.keyX = 1;
-        this.keyY = 1;
+
 
     }
+    public void setUp(){
+
+        int isOk = 0;
+        Random rand = new Random();
+        while (isOk < cntNeeded ){
+            System.out.println(isOk);
+            System.out.println(cntNeeded);
+
+            keyX =  rand.nextInt(4);
+            keyY =  rand.nextInt(4);
+            tempX = keyX;
+            tempY = keyY;
+
+            System.out.println(keyX);
+            System.out.println(keyY);
+
+            System.out.println("-------------------");
+            isOk++;
+        }
+
+        this.nextStep();
+        while (isOk < cntNeeded ){
+            System.out.println(isOk);
+            System.out.println(cntNeeded);
+
+            int isSame = 0;
+            playerX = tempX = rand.nextInt(4);
+            playerY = tempY = rand.nextInt(4);
+
+            System.out.println(playerX);
+            System.out.println(playerY);
+            System.out.println(X_used);
+            System.out.println(Y_used);
+            System.out.println("-------------------");
+            for(int k = 0; k < size; k ++){
+                int lolX = (int) X_used.get(k);
+                int lolY = (int) Y_used.get(k);
+                if (playerX == lolX && playerY == lolY){
+                    isSame++;
+                }
+            }
+            if (isSame == 0){
+                isOk++;
+            }
+        }
+        this.nextStep();
+        while (isOk < cntNeeded ){
+            System.out.println(isOk);
+            System.out.println(cntNeeded);
+
+            int isSame = 0;
+            enemy1X = tempX = rand.nextInt(4);
+            enemy1Y = tempY = rand.nextInt(4);
+            System.out.println(enemy1X);
+            System.out.println(enemy1Y);
+            System.out.println(X_used);
+            System.out.println(Y_used);
+            System.out.println("-------------------");
+            for(int k = 0; k < size; k ++){
+                int lolX = (int) X_used.get(k);
+                int lolY = (int) Y_used.get(k);
+                if (enemy1X == lolX && enemy1Y == lolY){
+                    isSame++;
+                }
+            }
+            if (isSame == 0){
+                isOk++;
+            }
+        }
+        this.nextStep();
+        while (isOk < cntNeeded ){
+            System.out.println(isOk);
+            System.out.println(cntNeeded);
+
+            int isSame = 0;
+            enemy2X = tempX = rand.nextInt(4);
+            enemy2Y = tempY = rand.nextInt(4);
+            System.out.println(enemy2X);
+            System.out.println(enemy2Y);
+            System.out.println(X_used);
+            System.out.println(Y_used);
+            System.out.println("-------------------");
+            for(int k = 0; k < size; k ++){
+                int lolX = (int) X_used.get(k);
+                int lolY = (int) Y_used.get(k);
+                if (enemy2X== lolX && enemy2Y == lolY){
+                    isSame++;
+                }
+            }
+            if (isSame == 0){
+                isOk++;
+            }
+        }
+    }
+
+    public void nextStep(){
+        cntNeeded++;
+        X_used.add(tempX);
+        Y_used.add(tempY);
+        size = X_used.size();
+
+    }
+
     public void gameLoop(){
 //        int cnt = 0;
         while (true) {
@@ -89,8 +208,8 @@ public class Game1 {
     }
 
     public void printMap(){
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < mapheight; i++) {
+            for (int j = 0; j < mapwidth; j++) {
                 if (i==playerY && j==playerX){
                     System.out.print(" P ");
                 }
